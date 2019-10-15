@@ -1,8 +1,9 @@
-# Conversions
+# Crypto World
 
 
-## DOCKER
+## build image && run container
 
 ```bash
-docker run -tid -p 8000:8000 -v /home/cesc/projects/personal/crypto:/app --name crypto crypto:latest
+docker build --tag crypto:latest .
+docker run -tid -p 8000:8000 --name crypto crypto:latest
 ```
