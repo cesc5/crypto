@@ -1,0 +1,16 @@
+
+# Logs
+logs/
+*.log
+
+# Python Cache
+__pycache__/
+
+# SonarQube Files
+.scannerwork/
+sonar-project.properties
+# virtualenv
+venv/
+
+# COmpiled stuff
+*.pyc
