@@ -14,3 +14,6 @@ venv/
 
 # COmpiled stuff
 *.pyc
+
+.vscode
+crypto.code-workspace
