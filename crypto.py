@@ -14,7 +14,10 @@ def bitcoin_last_price():
 
     if response.status_code == 200:
         response_json = response.json()
-        data = {'USD': response_json['USD']['last'], "EUR": response_json['EUR']['last']}
+        data = {
+            'USD': response_json['USD']['last'],
+            "EUR": response_json['EUR']['last']
+               }
     else:
         data = {'msg': 'Error http code ' + str(response.status_code)}
 
@@ -33,9 +36,17 @@ def last_price(coin=""):
         response_json = response.json()
 
         if 'Response' in response_json:
-            data = {'msg': response_json['Response'] + ": " + response_json['Message']}
+            data = {
+                    'msg': response_json['Response'] +
+                    ": " + response_json['Message']
+                    }
         else:
-            data = {coin: {'USD': response_json['USD'], "EUR": response_json['EUR']}}
+            data = {
+                   coin: {
+                        'USD': response_json['USD'],
+                        "EUR": response_json['EUR']
+                         }
+                   }
     else:
         data = {'msg': 'Error http code ' + str(response.status_code)}
 

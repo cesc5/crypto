@@ -48,7 +48,8 @@ def last_price(coin=""):
             logger.info('Get ' + coin + ' price: ' + str(data))
             response_json = {"success": "true", "data": data}
         else:
-            logger.error('Couldn\'t get ' + coin + ' price, something went wrong.')
+            logger.error('Couldn\'t get ' + coin +
+                         ' price, something went wrong.')
             response_json = '{ "success": "false"}'
     else:
         logger.error('Must provide a coin.')
@@ -68,7 +69,8 @@ def portfolio():
             logger.info('Get ' + coin + ' price: ' + str(data))
             portfolio.append(data)
         else:
-            logger.error('Couldn\'t get ' + coin + ' price, something went wrong.')
+            logger.error('Couldn\'t get ' + coin +
+                         ' price, something went wrong.')
 
     response_json = {"success": "true", "data": portfolio}
     return jsonify(response_json)
@@ -81,7 +83,6 @@ health check endopint
 def check_propensity():
 
     response_json = {"success": "true"}
-
     return jsonify(response_json)
 
 
