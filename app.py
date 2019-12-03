@@ -60,7 +60,7 @@ def last_price(coin=""):
 @app.route('/portfolio', methods=['GET'])
 def portfolio():
     portfolio = []
-    coins = ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA', '0x']
+    coins = ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA']
 
     for coin in coins:
 
