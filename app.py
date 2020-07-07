@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Start wrapper Application
-"""
 
 import logging.config
 import logging
@@ -22,9 +19,6 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 
-"""
-propensity loan endopint
-"""
 @app.route('/price/bitcoin', methods=['GET'])
 def price_bitcoin():
 
@@ -76,11 +70,15 @@ def portfolio():
     return jsonify(response_json)
 
 
-"""
-health check endopint
-"""
 @app.route('/health', methods=['GET'])
-def check_propensity():
+def get_health():
+
+    response_json = {"success": "true"}
+    return jsonify(response_json)
+
+
+@app.route('/', methods=['GET'])
+def get_home():
 
     response_json = {"success": "true"}
     return jsonify(response_json)
