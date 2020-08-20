@@ -12,9 +12,9 @@ sonar-project.properties
 # virtualenv
 venv/
 
-# COmpiled stuff
+# Compiled stuff
 *.pyc
 
 .vscode
-crypto.code-workspace
+*.code-workspace
 .devcontainer

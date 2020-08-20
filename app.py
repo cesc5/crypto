@@ -10,10 +10,10 @@ import crypto
 
 
 # init logger
-with open('./config/config.yml', 'r') as config:
-    configs = yaml.safe_load(config)
+with open('./config/config.yml', 'r') as file:
+    config = yaml.safe_load(file)
 
-logging.config.dictConfig(configs)
+logging.config.dictConfig(config['logger'])
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ def price_bitcoin():
         response_json = {"success": "true", "data": data}
     else:
         logger.error('Couldn\'t get bitcoin price, something went wrong.')
-        response_json = '{ "success": "false"}'
+        response_json = {"success": "false"}
 
     return jsonify(response_json)
 
@@ -47,14 +47,18 @@ def last_price(coin=""):
             response_json = '{ "success": "false"}'
     else:
         logger.error('Must provide a coin.')
-        response_json = '{ "success": "false", "msg": "must provide a coin"}'
+        response_json = {
+            "success": "false",
+            "msg": "Must provide a coin"
+            }
     return jsonify(response_json)
 
 
+@app.route('/', methods=['GET'])
 @app.route('/portfolio', methods=['GET'])
 def portfolio():
     portfolio = []
-    coins = ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA']
+    coins = ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA', 'XLM']
 
     for coin in coins:
 
@@ -77,12 +81,9 @@ def get_health():
     return jsonify(response_json)
 
 
-@app.route('/', methods=['GET'])
-def get_home():
-
-    response_json = {"success": "true"}
-    return jsonify(response_json)
-
-
 if __name__ == '__main__':
-    app.run()
+
+    debug = config['flask']['debug'] == 'True'
+    logger.info('DEBUG MODE: ' + str(debug))
+
+    app.run(debug=debug)
