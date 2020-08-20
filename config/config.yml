@@ -1,18 +1,24 @@
-version: 1
-formatters:
-  simple:
-    format: '[%(asctime)s] [%(process)s] [%(levelname)s] %(name)s - %(message)s'
-handlers:
-  console:
-    class: logging.StreamHandler
-    level: DEBUG
-    formatter: simple
-    stream: ext://sys.stdout
-loggers:
-  sampleLogger:
+crypto:
+  coins: ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA', 'XLM']
+  url: 'https://min-api.cryptocompare.com/data/price'
+  currencies: ['USD', 'EUR']
+  key: '79d1890732c82b42fc6497c1dc59297ce5a8afae1127f27b303a7465bc65751d'
+logging:
+  version: 1
+  formatters:
+    simple:
+      format: '[%(asctime)s] [%(process)s] [%(levelname)s] %(name)s - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+  loggers:
+    sampleLogger:
+      level: DEBUG
+      handlers: [console]
+      propagate: yes
+  root:
     level: DEBUG
     handlers: [console]
-    propagate: yes
-root:
-  level: DEBUG
-  handlers: [console]

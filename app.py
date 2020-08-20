@@ -13,7 +13,7 @@ import crypto
 with open('./config/config.yml', 'r') as file:
     config = yaml.safe_load(file)
 
-logging.config.dictConfig(config['logger'])
+logging.config.dictConfig(config['logging'])
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
@@ -58,7 +58,7 @@ def last_price(coin=""):
 @app.route('/portfolio', methods=['GET'])
 def portfolio():
     portfolio = []
-    coins = ['BTC', 'ETH', 'BNB', 'BAT', 'DENT', 'ENJ', 'MIOTA', 'XLM']
+    coins = config['crypto']['coins']
 
     for coin in coins:
 
