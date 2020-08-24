@@ -8,14 +8,21 @@ Containerized web-app, using flask microframework and configured to run with `gu
 GUNICORN_PORT='80' # in which port is gunicorn running
 GUNICORN_WORKERS='2' # How many workers has gunicorn
 DOCKER_TAG='crypto:latest'
-docker build --tag ${TAG} \
-    --build-arg PORT=$GUNICORN_PORT \
-    --build-arg WORKERS=$GUNICORN_WORKERS .
+docker build --tag ${DOCKER_TAG} \
+    --build-arg PORT=${GUNICORN_PORT} \
+    --build-arg WORKERS=${GUNICORN_WORKERS} .
 ```
 
 ## Running the container
 
 ### Development
+
+```bash
+# Use  virtual environment
+python3 -m venv venv
+. venv/bin/activate
+pip3 install -r requirements.txt
+```
 
 ```bash
 GUNICORN_PORT='8000'
